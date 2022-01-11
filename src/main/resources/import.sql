@@ -69,8 +69,8 @@ INSERT INTO CLIENTES (nombre, apellido, email, created_at, region_id) values ('A
 INSERT INTO CLIENTES (nombre, apellido, email, created_at, region_id) values ('Patrick3','Stweart','mail12c@gmail.com',STR_TO_DATE('01-12-2021','%d-%m-%Y'),8);
 
 
-insert into usuarios (username, password, enabled) values ('ricardo','$2a$10$yo5pmXaLLNyDQtftaw8hdOsM05/zYd1ZRod5YQvf9wn.5sM9c6Vb.',1);
-insert into usuarios (username, password, enabled) values ('admin','$2a$10$Bu/m2fc8zrGBe311BDvFouRNqQlTTP/Gg6E4laxnlVlVGANermQk6',1);
+insert into usuarios (username, password, enabled, nombre, apellido, email) values ('ricardo','$2a$10$yo5pmXaLLNyDQtftaw8hdOsM05/zYd1ZRod5YQvf9wn.5sM9c6Vb.',1,'Ricardo','Dorado','ricardorado9@gmail.com');
+insert into usuarios (username, password, enabled, nombre, apellido, email) values ('admin','$2a$10$Bu/m2fc8zrGBe311BDvFouRNqQlTTP/Gg6E4laxnlVlVGANermQk6',1,'Administrador','Sistema','admin@gmail.com');
 
 insert into roles (nombre) values ('ROLE_USER');
 insert into roles (nombre) values ('ROLE_ADMIN');
@@ -78,3 +78,24 @@ insert into roles (nombre) values ('ROLE_ADMIN');
 insert into usuarios_roles (usuario_id, role_id)  values (1,1);
 insert into usuarios_roles (usuario_id, role_id)  values (2,1);
 insert into usuarios_roles (usuario_id, role_id)   values (2,2);
+
+insert into productos (nombre , precio, created_at) values ('Nevera Haceb',1500000,curdate());
+insert into productos (nombre , precio, created_at) values ('XBOX ONE X SERIES',1500000,curdate());
+insert into productos (nombre , precio, created_at) values ('Impresora EPSON',500000,curdate());
+insert into productos (nombre , precio, created_at) values ('Camara Canon',500000,curdate());
+insert into productos (nombre , precio, created_at) values ('Computador Apple',15000000,curdate());
+insert into productos (nombre , precio, created_at) values ('Televisor Samsung',2200000,curdate());
+insert into productos (nombre , precio, created_at) values ('Celular Motorola',1200000,curdate());
+
+insert into facturas (descripcion, observacion, kliente_id, created_at) values ('Factura 1','Esta es la factura 1',1,now()) ;
+insert into facturas (descripcion, observacion, kliente_id, created_at) values ('Factura 2','Esta es la factura 2',2,now()) ;
+insert into facturas (descripcion, observacion, kliente_id, created_at) values ('Factura 3','Esta es la factura 3',3,now()) ;
+insert into facturas (descripcion, observacion, kliente_id, created_at) values ('Factura 4','Esta es la factura 4',4,now()) ;
+insert into facturas (descripcion, observacion, kliente_id, created_at) values ('Factura 5','Esta es la factura 5',5,now()) ;
+
+
+INSERT INTO facturas_items (cantidad,producto_id,factura_id) VALUES (1,1,1);
+INSERT INTO facturas_items (cantidad,producto_id,factura_id) VALUES (2,2,2);
+INSERT INTO facturas_items (cantidad,producto_id,factura_id) VALUES (3,3,3);
+INSERT INTO facturas_items (cantidad,producto_id,factura_id) VALUES (4,4,4);
+INSERT INTO facturas_items (cantidad,producto_id,factura_id) VALUES (5,5,5);

@@ -18,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -59,6 +60,7 @@ public class ClienteRestController {
 	}
 
 	@GetMapping("/clientes/{id}")
+	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
 	// @ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<?> show(@PathVariable Long id) {
 		Cliente cliente = null;
@@ -82,6 +84,7 @@ public class ClienteRestController {
 	}
 
 	@PostMapping("/clientes")
+	@Secured({ "ROLE_ADMIN" })
 	// @ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<?> create(@Valid @RequestBody Cliente cliente, BindingResult result) {
 		Cliente newCliente = null;
@@ -114,6 +117,7 @@ public class ClienteRestController {
 
 	@PutMapping("/clientes/{id}")
 	// @ResponseStatus(HttpStatus.CREATED)
+	@Secured( "ROLE_ADMIN" )
 	public ResponseEntity<?> update(@Valid @RequestBody Cliente cliente, BindingResult result, @PathVariable Long id) {
 		Cliente clienteActual = clienteService.findById(id);
 
@@ -144,6 +148,7 @@ public class ClienteRestController {
 
 	@DeleteMapping("/clientes/{id}")
 	// @ResponseStatus(HttpStatus.NO_CONTENT)
+	@Secured( "ROLE_ADMIN" )
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		Map<String, Object> response = new HashMap<>();
 		try {
@@ -162,6 +167,7 @@ public class ClienteRestController {
 	}
 
 	@PostMapping("/clientes/upload")
+	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
 	public ResponseEntity<?> upload(@RequestParam("archivo") MultipartFile archivo, @RequestParam("id") Long id) {
 		Map<String, Object> response = new HashMap<>();
 		Cliente cliente = clienteService.findById(id);
